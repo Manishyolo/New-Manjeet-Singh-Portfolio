@@ -1,4 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+
+:root{
+     // font sizes
+    --font-size-large:4rem;
+
+    //colors
+    --primary-color-one:#E39F34;
+    --primary-color-two:#0C0C0C;
+    --primary-color-three:#7874FF;
+    --primary-color-four:#111111;
+    --primary-color-five:#FFFFFF;
+
+}
+/* Webkit-based browsers */
+::-webkit-scrollbar {
+    width: .3vw;
+    height: .1vw;
+}
+
+::-webkit-scrollbar-track {
+    background:#151515;
+    
+}
+
+::-webkit-scrollbar-thumb {
+    background-color:#FFA63D; 
+    border-radius: none;
+    border-radius: 12px;
+ 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color:#fff;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -18,12 +53,15 @@ html, body{
 main{
     height: 100%;
     width: 100%;
-  
+    padding-top: 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
 }
 .page-1{
-    height: 100vh;
+    height: 95vh;
+    border-radius: 1vw;
     width: 100%;
-    background-color: #E39F34;
+    background-color: var(--primary-color-one);
    position: relative;
   overflow: hidden;
   display: flex;
@@ -53,19 +91,20 @@ main{
     content: "";
     width: 16%;
     height: .1vw;
-    background-color: #000;
+    background-color: var(--primary-color-two);
     display: block;
     margin-bottom: 1rem;
    }
    .para-2{
      font-size: .7rem;
     font-weight: 600;
+    color: var(--primary-color-two);
    }
 }
 .circle{
     width: 35vw;
     height: 35vw;
-    background-color: #7874FF;
+    background-color: var(--primary-color-three);
     border-radius: 50%;
     position: absolute;
     top: 50%;
@@ -74,48 +113,106 @@ main{
     transform: translate(-50%, -50%);
 }
 
-.clip-shape{
-    width: 70vw;
-    height: 7vh;
- 
-   
-    position: relative;
+
+.shape{
+    width: 75%;
+    height: 6vh;
+    
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
- overflow: hidden;
-  
+    border-top-left-radius: 15vw;
+    border-top-right-radius: 15vw;
+    corner-shape:bevel;
+    background-color:var(--primary-color-four);
 }
-.middle-shape{
-   width: 80%;
-   height: 100%;
-background-color: #111111;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    z-index: 1 ;
-    transform: translateX(-50%);
-}
-.box-left{
-    width: 25%;
-    height: 100%;
-   background-color: #111111;
-    position: absolute;
-    top: 0;
-    left: -2%;
-    transform: rotate(-40deg);
-}
-.box-right{
-    width: 25%;
-    height: 100%;
-  background-color: #111111;
-    position: absolute;
-    top: 0;
-    right: -2%;
-     transform: rotate(40deg);
+
+
+.headline{
+    margin-top: 10vw;
+    color:var(--primary-color-five);
+    font-size: var(--font-size-large);
+    margin-left: 10vw;
 }
 .page-2{
     width: 100%;
     height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+}
+.video-container{
+    width: fit-content;
+    height: fit-content;
+    padding: 4vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.video-box{
+    width: 75vw;
+    height: 40vw;
+   
+    position: relative;
+    z-index: 2;
+
+    video{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.corner-1{
+    width: 25vw;
+    height: 7vw;
+
+    position: absolute;
+     top: 0;
+    right: 0;
+
+    border-top: 1px solid var(--primary-color-one);
+    border-right: 1px solid var(--primary-color-one);
+
+    .corner-cut-1{
+        width: 30%;
+        height: 18%;
+        background-color: var(--primary-color-one);
+        position: absolute;
+        top: 0;
+        right: 0;
+       border-bottom-left-radius: 15vw;
+       corner-shape:bevel;
+    }
+}
+.corner-2{
+    width: 25vw;
+    height: 7vw;
+  
+    position: absolute;
+   left: 0;
+    bottom: 0;
+    border-bottom: 1px solid var(--primary-color-one);
+    border-left: 1px solid var(--primary-color-one);
+
+      .corner-cut-2{
+        width: 30%;
+        height: 18%;
+        background-color: var(--primary-color-one);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+       border-top-right-radius: 15vw;
+       corner-shape:bevel;
+    }
+}
+.page-3{
+    width: 100%;
+    height: 100vh;
+    margin-top: 4vw;
 }
