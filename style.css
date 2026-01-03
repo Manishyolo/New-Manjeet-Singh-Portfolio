@@ -36,7 +36,7 @@
 }
 
 html {
-  font-size: clamp(12px, 1.5vw, 25px);
+  font-size: clamp(10px, 1.5vw, 25px);
 }
 
 html, body {
@@ -301,26 +301,37 @@ main {
 
 .swiper {
   width: 100%;
-  height: 90vh;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-bottom: 3vw;
   cursor: grab;
   margin-top: 4vw;
 }
 
+.swiper:active {
+  cursor: grabbing;
+}
+
 .swiper-slide {
   width: 100%;
-  height: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
   text-align: center;
   font-size: 18px;
-  background: #444;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 2vw;
-  flex-direction: row;
 }
 .swiper-slide .img-container {
-  width: 22vw;
-  height: 30vh;
-  background-color: var(--primary-color-one);
+  border-radius: 1vw;
+  height: 22vw;
+  overflow: hidden;
+}
+.swiper-slide .img-container video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .swiper-slide img {
@@ -332,12 +343,61 @@ main {
 }
 
 /* Normal bullet */
+.swiper-pagination {
+  bottom: 0;
+  z-index: 2;
+}
+
 .swiper-pagination-bullet {
-  background: #111111; /* inactive color */
+  cursor: pointer !important;
+  background: #2c2c2c; /* inactive color */
   opacity: 0.5;
 }
 
 /* Active bullet */
 .swiper-pagination-bullet-active {
   background: #e39f34; /* active color */
+}
+
+.gallery-bottom-headline {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 1vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2vw;
+}
+
+.left-bottom {
+  width: 50%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.info {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+}
+.info h3 {
+  font-size: 0.8rem;
+  color: var(--primary-color-five);
+  font-weight: 600;
+}
+.info p {
+  font-size: 0.6rem;
+  color: var(--primary-color-six);
+}
+
+.right-bottom {
+  width: 50%;
+  height: -moz-fit-content;
+  height: fit-content;
 }/*# sourceMappingURL=style.css.map */
