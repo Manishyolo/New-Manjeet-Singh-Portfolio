@@ -601,5 +601,106 @@ main {
 
 .page-6 {
   width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-top: 12vw;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  display: flex;
+  flex-direction: column;
+  gap: 4vw;
+}
+.page-6 h2 {
+  font-size: var(--font-size-large);
+  color: var(--primary-color-five);
+  text-transform: uppercase;
+}
+.page-6 .slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.page-6 .slide {
+  width: -moz-max-content;
+  width: max-content;
+  display: flex;
+  gap: 3rem;
+  animation: scroll 20s linear infinite;
+}
+.page-6 .slide .client {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+.page-6 .slide .client span {
+  width: 12vw;
+  height: 12vw;
+  display: block;
+}
+.page-6 .slide .client span img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.page-6 .slide .client h2 {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.page-7 {
+  width: 100%;
   height: 100vh;
+  border: 1px solid white;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  margin-top: 12vw;
+}
+.page-7 .page-7-headline {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.page-7 .page-7-headline h2 {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: var(--font-size-large);
+  color: var(--primary-color-five);
+  position: relative;
+  font-weight: 550;
+}
+.page-7 .page-7-headline h2 span {
+  width: 100%;
+  height: 0.1vw;
+  background-color: var(--primary-color-five);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.page-7 .about-headlines {
+  width: 100%;
+  height: 60vh;
+  border: 1px solid yellow;
+  margin-top: 10vw;
+  line-height: 2rem;
+}
+.page-7 .about-headlines > h2:nth-child(1) {
+  color: var(--primary-color-five);
+  font-size: 3.6rem;
+}
+.page-7 .about-headlines > h2:nth-child(2) {
+  color: var(--primary-color-five);
+  font-size: 3.6rem;
 }/*# sourceMappingURL=style.css.map */

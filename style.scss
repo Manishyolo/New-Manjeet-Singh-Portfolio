@@ -606,6 +606,130 @@ main {
 
 .page-6 {
   width: 100%;
+  height: fit-content;
+  margin-top: 12vw;
+
+  @include Padding-left-right(6vw);
+
+  display: flex;
+  flex-direction: column;
+  gap: 4vw;
+
+  h2 {
+    font-size: var(--font-size-large);
+    color: var(--primary-color-five);
+    text-transform: uppercase;
+  }
+
+  .slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+
+    // fade on left & right
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 20%,
+      black 80%,
+      transparent 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 20%,
+      black 80%,
+      transparent 100%
+    );
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .slide {
+    width: max-content;
+    display: flex;
+    gap: 3rem;
+    animation: scroll 20s linear infinite;
+
+    .client {
+      display: flex;
+      align-items: center;
+      gap: 1vw;
+
+      span {
+        width: 12vw;
+        height: 12vw;
+        display: block;
+
+        img {
+          @include media-cover();
+        }
+      }
+
+      h2 {
+        font-weight: 600;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.page-7{
+  width: 100%;
   height: 100vh;
- 
+ border: 1px solid white;
+ @include Padding-left-right(6vw);
+ margin-top: 12vw;
+
+  .page-7-headline{
+     width: 100%;
+     height: fit-content;
+   
+     display: flex;
+     align-items: end;
+     justify-content: end;
+      h2{
+        width: fit-content;
+        font-size: var(--font-size-large);
+        color: var(--primary-color-five);
+        position: relative;
+        font-weight: 550;
+        span{
+          width: 100%;
+          height: .1vw;
+          background-color: var(--primary-color-five);
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+      }
+  }
+
+  .about-headlines{
+   width: 100%;
+   height: 60vh;
+   border: 1px solid yellow;
+   margin-top: 10vw;
+   line-height: 2rem;
+  
+  }
+   .about-headlines > h2:nth-child(1){
+      
+      color: var(--primary-color-five);
+      font-size: 3.6rem;
+   
+   }
+    .about-headlines > h2:nth-child(2){
+      
+      color: var(--primary-color-five);
+      font-size: 3.6rem;
+   
+   }
 }
