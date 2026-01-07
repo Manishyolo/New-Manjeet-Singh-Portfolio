@@ -683,8 +683,8 @@ main {
 
 .page-7{
   width: 100%;
-  height: 100vh;
- border: 1px solid white;
+  height: fit-content;
+ 
  @include Padding-left-right(6vw);
  margin-top: 12vw;
 
@@ -697,7 +697,7 @@ main {
      justify-content: end;
       h2{
         width: fit-content;
-        font-size: var(--font-size-large);
+        font-size: 5.3rem;
         color: var(--primary-color-five);
         position: relative;
         font-weight: 550;
@@ -714,22 +714,96 @@ main {
 
   .about-headlines{
    width: 100%;
-   height: 60vh;
-   border: 1px solid yellow;
-   margin-top: 10vw;
-   line-height: 2rem;
+   height: fit-content;
   
+   margin-top: 10vw;
+   line-height: 3.9rem;
+   position: relative;
+     
+     p{
+    position: absolute;
+     right: 2%;
+     top: 15%;
+    line-height: normal;
+    font-size: .555rem;
+    color: var(--primary-color-one);
+   }
   }
+  
+
    .about-headlines > h2:nth-child(1){
       
       color: var(--primary-color-five);
-      font-size: 3.6rem;
+      font-size: 4.8rem;
+     margin-left: 10vw;
    
    }
     .about-headlines > h2:nth-child(2){
-      
+      font-weight: 300;
       color: var(--primary-color-five);
-      font-size: 3.6rem;
+      font-size: 4.8rem;
+      margin-left: 3.4vw;
    
    }
+    .about-headlines > h2:nth-child(3){
+      
+      color: var(--primary-color-five);
+      font-size: 4.8rem;
+      margin-left: 24vw;
+   
+   }
+    .about-headlines > h2:nth-child(4){
+      font-weight: 300;
+      color: var(--primary-color-five);
+      font-size: 4.8rem;
+      margin-left: 38vw;
+   }
+
+   .about{
+    width: 100%;
+    height: fit-content;
+    
+    display: flex;
+    gap: 6vw;
+    align-items: center;
+
+    .author-img-container{
+      width: 30vw;
+      height: 37vw;
+      
+      border-radius: 1vw;
+overflow:hidden;
+      img{
+        @include media-cover();
+        object-position: top;
+      }
+    }
+   
+    .author-info{
+      width: fit-content;
+      height: fit-content;
+     
+      display: flex;
+      flex-direction: column;
+      gap: 2.3vw;
+      
+      .line{
+        width: 100%;
+        height: .1vw;
+        background-color: var(--primary-color-six);
+      }
+       
+      p{
+        font-size: .9rem;
+        color: var(--primary-color-six);
+       
+      }
+    }
+   }
+}
+
+.page-8{
+  width: 100%;
+  height: 100vh;
+  
 }

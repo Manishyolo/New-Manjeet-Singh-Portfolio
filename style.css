@@ -659,8 +659,8 @@ main {
 
 .page-7 {
   width: 100%;
-  height: 100vh;
-  border: 1px solid white;
+  height: -moz-fit-content;
+  height: fit-content;
   padding-left: 6vw;
   padding-right: 6vw;
   margin-top: 12vw;
@@ -676,7 +676,7 @@ main {
 .page-7 .page-7-headline h2 {
   width: -moz-fit-content;
   width: fit-content;
-  font-size: var(--font-size-large);
+  font-size: 5.3rem;
   color: var(--primary-color-five);
   position: relative;
   font-weight: 550;
@@ -691,16 +691,84 @@ main {
 }
 .page-7 .about-headlines {
   width: 100%;
-  height: 60vh;
-  border: 1px solid yellow;
+  height: -moz-fit-content;
+  height: fit-content;
   margin-top: 10vw;
-  line-height: 2rem;
+  line-height: 3.9rem;
+  position: relative;
+}
+.page-7 .about-headlines p {
+  position: absolute;
+  right: 2%;
+  top: 15%;
+  line-height: normal;
+  font-size: 0.555rem;
+  color: var(--primary-color-one);
 }
 .page-7 .about-headlines > h2:nth-child(1) {
   color: var(--primary-color-five);
-  font-size: 3.6rem;
+  font-size: 4.8rem;
+  margin-left: 10vw;
 }
 .page-7 .about-headlines > h2:nth-child(2) {
+  font-weight: 300;
   color: var(--primary-color-five);
-  font-size: 3.6rem;
+  font-size: 4.8rem;
+  margin-left: 3.4vw;
+}
+.page-7 .about-headlines > h2:nth-child(3) {
+  color: var(--primary-color-five);
+  font-size: 4.8rem;
+  margin-left: 24vw;
+}
+.page-7 .about-headlines > h2:nth-child(4) {
+  font-weight: 300;
+  color: var(--primary-color-five);
+  font-size: 4.8rem;
+  margin-left: 38vw;
+}
+.page-7 .about {
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  gap: 6vw;
+  align-items: center;
+}
+.page-7 .about .author-img-container {
+  width: 30vw;
+  height: 37vw;
+  border-radius: 1vw;
+  overflow: hidden;
+}
+.page-7 .about .author-img-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+.page-7 .about .author-info {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 2.3vw;
+}
+.page-7 .about .author-info .line {
+  width: 100%;
+  height: 0.1vw;
+  background-color: var(--primary-color-six);
+}
+.page-7 .about .author-info p {
+  font-size: 0.9rem;
+  color: var(--primary-color-six);
+}
+
+.page-8 {
+  width: 100%;
+  height: 100vh;
 }/*# sourceMappingURL=style.css.map */
