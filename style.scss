@@ -75,6 +75,7 @@ main {
   padding-top: 1vw;
   padding-left: 1vw;
   padding-right: 1vw;
+  position: relative;
 }
 .page-1 {
   height: 95vh;
@@ -805,5 +806,15 @@ overflow:hidden;
 .page-8{
   width: 100%;
   height: 100vh;
+  
+}
+.Light-box{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 9999;
   
 }
