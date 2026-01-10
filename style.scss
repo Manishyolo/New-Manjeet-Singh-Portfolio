@@ -334,7 +334,7 @@ main {
   text-align: center;
   @include Grid(2, 2, 2vw);
 
-  .img-container {
+  .animation-container {
     border-radius: 1vw;
     height: 22vw;
     overflow: hidden;
@@ -814,7 +814,8 @@ overflow:hidden;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.9);
   z-index: 9999;
+  display: none;
   
 }
