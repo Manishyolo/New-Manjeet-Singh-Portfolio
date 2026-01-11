@@ -12,11 +12,27 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
     />
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
-      <div class="Light-box"></div>
+      <div class="Light-box">
+      <div class="close-btn">
+        <div class="close-btn-corner-1"></div>
+        <div class="close-btn-corner-2"></div>
+        <div class="close-btn-corner-3"></div>
+        <div class="close-btn-corner-4"></div>
+        <i class="ri-close-line"></i>
+      </div>
+
+       <div class="media-container">
+          
+       </div>
+      </div>
       <section class="page-1">
         <div class="circle"></div>
         <div class="shape"></div>
@@ -463,11 +479,14 @@
       </section>
       <section class="page-8"></section>
     </main>
+
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/lenis@1.3.17/dist/lenis.min.js"></script>
 
     <script src="scripts/library.js"></script>
-    <script src="scripts/app.js"></script>
+    <script type="module" src="scripts/app.js"></script>
   
   </body>
 </html>

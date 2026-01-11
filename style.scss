@@ -338,6 +338,7 @@ main {
     border-radius: 1vw;
     height: 22vw;
     overflow: hidden;
+    cursor: pointer;
 
     video {
       @include media-cover();
@@ -811,11 +812,80 @@ overflow:hidden;
 .Light-box{
   width: 100%;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(0,0,0,0.9);
   z-index: 9999;
-  display: none;
+scale: 0;
   
+.close-btn{
+  width: 3.4vw;
+  height: 3.4vw;
+  cursor: pointer;
+
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i{
+    color: var(--primary-color-one);
+    font-size: 1.4rem;
+    font-weight: 100;
+  }
+  .close-btn-corner-1{
+    width: 1vw;
+    height: 1vw;
+    border-left: 1px solid var(--primary-color-one);
+    border-top: 1px solid var(--primary-color-one);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+   .close-btn-corner-2{
+    width: 1vw;
+    height: 1vw;
+    border-right: 1px solid var(--primary-color-one);
+    border-top: 1px solid var(--primary-color-one);
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+   .close-btn-corner-3{
+    width: 1vw;
+    height: 1vw;
+     border-left: 1px solid var(--primary-color-one);
+    border-bottom: 1px solid var(--primary-color-one);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .close-btn-corner-4{
+    width: 1vw;
+    height: 1vw;
+    border-right: 1px solid var(--primary-color-one);
+    border-bottom: 1px solid var(--primary-color-one);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+  
+.media-container{
+
+  overflow: hidden;
+  border-radius: 1vw;
+  video{
+   @include media-cover();
+  }
+  img{
+    @include media-cover();
+  }
+}
 }
