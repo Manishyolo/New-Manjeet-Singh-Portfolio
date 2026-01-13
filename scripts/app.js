@@ -5,6 +5,9 @@ import MakeArrayofMedia from "./utility.js";
    DOM ELEMENT REFERENCES
 -------------------------------------------------- */
 
+const ForwardBtn = document.querySelector(".forward-btn");
+const BackwardBtn = document.querySelector(".backward-btn");
+
 // Lightbox main container
 const LightBoxContainer = document.querySelector(".Light-box");
 
