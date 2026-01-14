@@ -1,4 +1,4 @@
-// Import utility function that converts NodeLists into usable arrays
+// Import utility function
 import MakeArrayofMedia from "./utility.js";
 
 /* --------------------------------------------------
@@ -8,138 +8,197 @@ import MakeArrayofMedia from "./utility.js";
 const ForwardBtn = document.querySelector(".forward-btn");
 const BackwardBtn = document.querySelector(".backward-btn");
 
-// Lightbox main container
 const LightBoxContainer = document.querySelector(".Light-box");
-
-// Close button inside lightbox
 const LightBoxCloseBtn = document.querySelector(".close-btn");
-
-// Container where image/video will be injected
 const MediaContainer = document.querySelector(".media-container");
 
 /* --------------------------------------------------
-   MEDIA THUMBNAIL CONTAINERS (NodeLists)
+   MEDIA CONTAINERS
 -------------------------------------------------- */
 
 const AnimationsContainer = document.querySelectorAll(".animation-container");
 const ReelsContainer = document.querySelectorAll(".reel-container");
-const IllustrationsContainer = document.querySelectorAll(".illustration-container");
+const IllustrationsContainer = document.querySelectorAll(
+  ".illustration-container"
+);
 
 /* --------------------------------------------------
-   MEDIA SOURCE ARRAYS (URLs / paths)
-   Returned by MakeArrayofMedia()
+   MEDIA ARRAYS
 -------------------------------------------------- */
 
 const Animations = MakeArrayofMedia(
   document.querySelectorAll(".animation-container")
 );
-
 const Reels = MakeArrayofMedia(
   document.querySelectorAll(".reel-container")
 );
-
 const Illustrations = MakeArrayofMedia(
   document.querySelectorAll(".illustration-container")
 );
 
 /* --------------------------------------------------
-   CLICK HANDLERS — ANIMATIONS (VIDEOS)
+   LIGHTBOX STATE
+-------------------------------------------------- */
+
+let currentIndex = 0;
+let currentMediaArray = [];
+let currentType = "image";
+let currentRange = 1;
+let currentDimensions = { width: 0, height: 0 };
+
+/* --------------------------------------------------
+   CLICK HANDLERS — ANIMATIONS
 -------------------------------------------------- */
 
 AnimationsContainer.forEach((elem, index) => {
   elem.addEventListener("click", () => {
-    // Capture clicked element dimensions
-    const elemDimensions = {
+    currentIndex = index;
+    currentMediaArray = Animations;
+    currentType = "video";
+    currentRange = 1.6;
+
+    currentDimensions = {
       width: elem.clientWidth,
       height: elem.clientHeight,
     };
 
-    // Open lightbox and load corresponding video
     OpenLightBox();
-    LightBox(Animations[index], elemDimensions, "video", 1.6);
+    renderCurrentMedia();
   });
 });
 
 /* --------------------------------------------------
-   CLICK HANDLERS — REELS (VIDEOS)
+   CLICK HANDLERS — REELS
 -------------------------------------------------- */
 
 ReelsContainer.forEach((elem, index) => {
   elem.addEventListener("click", () => {
-    const elemDimensions = {
+    currentIndex = index;
+    currentMediaArray = Reels;
+    currentType = "video";
+    currentRange = 1.2;
+
+    currentDimensions = {
       width: elem.clientWidth,
       height: elem.clientHeight,
     };
 
     OpenLightBox();
-    LightBox(Reels[index], elemDimensions, "video", 1.2);
+    renderCurrentMedia();
   });
 });
 
 /* --------------------------------------------------
-   CLICK HANDLERS — ILLUSTRATIONS (IMAGES)
+   CLICK HANDLERS — ILLUSTRATIONS
 -------------------------------------------------- */
 
 IllustrationsContainer.forEach((elem, index) => {
   elem.addEventListener("click", () => {
-    const elemDimensions = {
+    currentIndex = index;
+    currentMediaArray = Illustrations;
+    currentType = "image";
+    currentRange = 1.6;
+
+    currentDimensions = {
       width: elem.clientWidth,
       height: elem.clientHeight,
     };
 
     OpenLightBox();
-    LightBox(Illustrations[index], elemDimensions, "image", 1.6);
+    renderCurrentMedia();
   });
 });
 
 /* --------------------------------------------------
-   CLOSE BUTTON HANDLER
+   FORWARD / BACKWARD BUTTONS
 -------------------------------------------------- */
 
-LightBoxCloseBtn.addEventListener("click", () => {
-  CloseLightBox();
+ForwardBtn.addEventListener("click", () => {
+  if (!currentMediaArray.length) return;
+
+  currentIndex = (currentIndex + 1) % currentMediaArray.length;
+  animateMediaChange(1);
+});
+
+BackwardBtn.addEventListener("click", () => {
+  if (!currentMediaArray.length) return;
+
+  currentIndex =
+    (currentIndex - 1 + currentMediaArray.length) %
+    currentMediaArray.length;
+
+  animateMediaChange(-1);
 });
 
 /* --------------------------------------------------
-   LIGHTBOX MEDIA CREATION FUNCTION
+   CLOSE BUTTON
 -------------------------------------------------- */
-/**
- * @param {string} url        - Media source URL
- * @param {object} dimensions- Width & height of clicked element
- * @param {string} type       - "video" | "image"
- * @param {number} range     - Scale multiplier for lightbox size
- */
-function LightBox(url, { width, height }, type, range) {
-  // Clear previously loaded media
+
+LightBoxCloseBtn.addEventListener("click", CloseLightBox);
+
+/* --------------------------------------------------
+   RENDER CURRENT MEDIA
+-------------------------------------------------- */
+
+function renderCurrentMedia() {
   MediaContainer.innerHTML = "";
 
-  // Resize media container based on clicked element
-  MediaContainer.style.width = width * range + "px";
-  MediaContainer.style.height = height * range + "px";
+  MediaContainer.style.width =
+    currentDimensions.width * currentRange + "px";
+  MediaContainer.style.height =
+    currentDimensions.height * currentRange + "px";
 
   let elem;
 
-  // Create video element
-  if (type === "video") {
+  if (currentType === "video") {
     elem = document.createElement("video");
-    elem.src = url;
+    elem.src = currentMediaArray[currentIndex];
     elem.controls = true;
     elem.autoplay = true;
     elem.loop = true;
   }
 
-  // Create image element
-  if (type === "image") {
+  if (currentType === "image") {
     elem = document.createElement("img");
-    elem.src = url;
+    elem.src = currentMediaArray[currentIndex];
   }
 
-  // Inject media into lightbox
   MediaContainer.appendChild(elem);
 }
 
 /* --------------------------------------------------
-   GSAP — OPEN LIGHTBOX ANIMATION
+   MEDIA TRANSITION ANIMATION
+-------------------------------------------------- */
+
+function animateMediaChange(direction = 1) {
+  const oldMedia = MediaContainer.firstChild;
+
+  gsap.to(oldMedia, {
+    x: direction * -60,
+    autoAlpha: 0,
+    duration: 0.3,
+    ease: "power2.in",
+    onComplete: () => {
+      renderCurrentMedia();
+
+      const newMedia = MediaContainer.firstChild;
+
+      gsap.fromTo(
+        newMedia,
+        { x: direction * 60, autoAlpha: 0 },
+        {
+          x: 0,
+          autoAlpha: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        }
+      );
+    },
+  });
+}
+
+/* --------------------------------------------------
+   OPEN LIGHTBOX ANIMATION
 -------------------------------------------------- */
 
 function OpenLightBox() {
@@ -152,7 +211,7 @@ function OpenLightBox() {
 }
 
 /* --------------------------------------------------
-   GSAP — CLOSE LIGHTBOX ANIMATION
+   CLOSE LIGHTBOX ANIMATION
 -------------------------------------------------- */
 
 function CloseLightBox() {
@@ -162,8 +221,8 @@ function CloseLightBox() {
     duration: 0.3,
     ease: "power3.in",
     onComplete: () => {
-      // Remove media after closing animation
       MediaContainer.innerHTML = "";
+      currentMediaArray = [];
     },
   });
 }
